@@ -8,6 +8,8 @@ maintainers-logins = ["godunko"]
 
 project-files=["gnat/a0b_playstation2_controller_async.gpr"]
 
+tags=["embedded", "playstation2", "ps2"]
+
 [configuration]
 disabled = true
 
