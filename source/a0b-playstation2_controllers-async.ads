@@ -13,8 +13,8 @@ package A0B.PlayStation2_Controllers.Async is
    package Communication is
 
       type Status is record
-         Last            : A0B.Types.Unsigned_8;
-         Not_Acknoledged : Boolean;
+         Last           : A0B.Types.Unsigned_8;
+         No_Acknowledge : Boolean;
          --  Second data byte of the packet contains encoded length of the
          --  data. All bytes except the last must be acknoledged by the
          --  controller. This flag is set on timeout of acknoledge awaiting,
@@ -24,26 +24,11 @@ package A0B.PlayStation2_Controllers.Async is
          --      second byte)
       end record;
 
-      --  type Status_Access is access all Status with Storage_Size => 0;
-
       type Buffer is
         array (A0B.Types.Unsigned_8 range 0 .. 31) of A0B.Types.Unsigned_8;
       --  Type for the internal buffer.
 
-      --  type Buffer_Access is access all Buffer with Storage_Size => 0;
-
-      --  type Suspension_Object_Access is
-      --    access all Ada.Synchronous_Task_Control.Suspension_Object
-      --      with Storage_Size => 0;
-
       type Abstract_Communication_Channel is limited interface;
-
---     not overriding procedure Exchange
---       (Self   : in out Communication_Driver;
---        Input  : Stream_Element_Array;
---        Output : out Stream_Element_Array;
---        Last   : out Stream_Element_Offset;
---        Status : out Communication_Status) is abstract;
 
       not overriding procedure Initialize
         (Self   : in out Abstract_Communication_Channel) is abstract;
@@ -57,9 +42,6 @@ package A0B.PlayStation2_Controllers.Async is
         (Self   : in out Abstract_Communication_Channel;
          Buffer : aliased in out Communication.Buffer;
          Status : aliased out Communication.Status) is abstract;
-        --   Buffer : Communication.Buffer_Access;
-        --   Status : Communication.Status_Access;
-        --   Done   : Communication.Suspension_Object_Access) is abstract;
       --  Exchange data with controller. It is blocking operation.
 
    end Communication;
