@@ -1,6 +1,6 @@
-# PlayStation2 controller driver (neutral layer)
+# PlayStation2 Controller driver (asynchronous neutral layer)
 
-This is neutral layer of the driver of the PlayStation2 controller (DualShock). Together with additional transport layer it allows to configure and poll controller, and might be useful in game/robotics applications.
+This is neutral layer of the driver of the PlayStation2 Controller (DualShock). Together with additional transport layer it allows to configure and poll controller, and might be useful in game/robotics applications.
 
 ## Transport layer
 
