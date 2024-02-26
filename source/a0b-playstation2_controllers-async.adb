@@ -710,16 +710,9 @@ package body A0B.PlayStation2_Controllers.Async is
    -----------------------
 
    function Polling_Time_Span
-     (Rate : Polling_Rate) return Ada.Real_Time.Time_Span
-   is
-      use type Ada.Real_Time.Time_Span;
-
-      Frequency : constant := 1.0 / Ada.Real_Time.Time_Unit;
-      --  Timer's frequency is necessary to compute number of ticks of the
-      --  polling interval.
-
+     (Rate : Polling_Rate) return Ada.Real_Time.Time_Span is
    begin
-      return Ada.Real_Time.Tick * (Integer (Frequency) / Integer (Rate));
+      return Ada.Real_Time.Microseconds (1_000_000 / Integer (Rate));
    end Polling_Time_Span;
 
 end A0B.PlayStation2_Controllers.Async;
