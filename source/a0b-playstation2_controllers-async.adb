@@ -555,6 +555,11 @@ package body A0B.PlayStation2_Controllers.Async is
 
       Self.Driver_Enabled := True;
       Ada.Synchronous_Task_Control.Set_True (Self.Driver_Suspension);
+
+      --  Fill active buffer by initial state of polling in digital mode.
+
+      Self.Buffer (Self.Communication_Buffer + 1) :=
+        [16#FF#, 16#41#, 16#5A#, 16#FF#, 16#FF#, others => 16#00#];
    end Initialize;
 
    --------------------
